@@ -13,11 +13,11 @@ name_line = "codelif - Harsh Sharma; writes Linux desktop tooling, mostly in Go"
 
 # The template appends a [--dark] flag to this list; that one is the theme
 # toggle. Without JS it is just more synopsis text, which is the point.
-synopsis_flags = ["--go", "--c", "--reverse-engineer TARGET", "--ship"]
+synopsis_flags = ["--go", "--c", "--reverse-engineer TARGET"]
 
 description_paras = [
   "Builds daemons, status bars and protocol clients for Linux. Prefers text protocols, single binaries, and software that keeps working when you close the browser.",
-  "Most of it starts the same way: something on my machine is worse than it needs to be, and the fix turns out to be a small program nobody had written yet.",
+  "Most of it starts the same way: something on my machine is worse than it needs to be, and the fix turns out to be a weekend project.",
   "Currently in that \"C is better\" phase.",
 ]
 
@@ -46,7 +46,7 @@ body = "Hyprland could already draw a notification. Nothing on the system knew h
 name = "whatevr"
 sect = "1"
 tagline = "a Linux-first WhatsApp client; one daemon, any number of thin frontends"
-meta = "Go · Qt/Kirigami · BSD-3"
+meta = "Go · Qt/Kirigami · BSD-3 · 12★"
 url = "https://github.com/codelif/whatevr"
 url_label = "github.com/codelif/whatevr"
 body = "Chat clients fuse the network, the message store and the pixels into one process, so every new interface means reimplementing all three. Here whatevrd owns the connection, the SQLite store, the media cache and notifications; a frontend owns pixels and a documented unix socket. That split is the whole design: writing another frontend is a weekend, not a fork."
