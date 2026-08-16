@@ -52,11 +52,11 @@ url_label = "github.com/codelif/whatevr"
 body = "Chat clients fuse the network, the message store and the pixels into one process, so every new interface means reimplementing all three. Here whatevrd owns the connection, the SQLite store, the media cache and notifications; a frontend owns pixels and a documented unix socket. That split is the whole design: writing another frontend is a weekend, not a fork."
 
 [[extra.projects]]
-name = "jiit"
-sect = "7"
-tagline = "my college's webportal, made programmable"
-meta = "Python · Go · JavaScript"
-url = "https://github.com/codelif/pyjiit"
-url_label = "pyjiit · jiit-tt-parser · jpoop-router · planner"
-body = "The portal encrypts its API payloads, which is the only thing standing between students and their own data. Once that is understood the data is just data: pyjiit makes it a library, jiit-tt-parser makes the timetables machine-readable, and the planner at planner.jpoop.in turns the result into something people actually open on a Monday morning."
+name = "jpoop-router"
+sect = "8"
+tagline = "a Raspberry Pi routing a network that does not want to be routed through"
+meta = "Go · Svelte · 8★"
+url = "https://github.com/codelif/jpoop-router"
+url_label = "github.com/codelif/jpoop-router"
+body = "The campus network expects a browser at a captive portal, hands out credentials with daily quotas that run out, and runs WEP on the uplink. A Pi sits in front of all of it. Three Go binaries split by privilege: credentials rotate on their own and record the portal's own reason when one stops working, allowances are enforced against nftables counters in the kernel rather than sampled from userspace, and egress goes through a tunnel with DNS pinned so lookups cannot leak, which fails open the moment the tunnel stops carrying traffic."
 +++
