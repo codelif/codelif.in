@@ -85,7 +85,15 @@ body {
   color: var(--dim);
   text-transform: none;
 }
-.man-line .slot { flex: 1 1 0; min-width: 0; }
+/* Never wrap a slot mid-token. A real man page truncates its header rather
+   than reflowing it, so clip with an ellipsis instead. */
+.man-line .slot {
+  flex: 1 1 0;
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 .slot-l { text-align: left; }
 .slot-c { text-align: center; }
 .slot-r { text-align: right; }
@@ -203,13 +211,18 @@ ul.plain li { margin-bottom: 0.15rem; }
 
 /* ---- narrow screens ---------------------------------------------------- */
 
+/* The right slot only ever repeated the left one, so it is the first thing to
+   go. Drop it well before the line gets tight: phone landscape and small
+   tablets land here, and three slots leave no slack for a long page name. */
+@media (max-width: 48rem) {
+  .slot-r { display: none; }
+  /* Two slots left, so stop centring the second against a phantom third. */
+  .slot-c { text-align: right; }
+}
+
 @media (max-width: 34rem) {
   body { padding: 1.25rem 1rem 2.5rem; font-size: 15px; --ind: 2ch; }
-  /* The right slot only ever repeated the left one; drop it before wrapping. */
-  .slot-r { display: none; }
   .man-line { gap: 0.5ch; }
-  /* Two slots left, so stop centring the second one against a phantom third. */
-  .slot-c { text-align: right; }
   .apropos li { grid-template-columns: 1fr; gap: 0; margin-bottom: 0.7rem; }
   .apropos .ap-dash { display: none; }
   .prose ul, .prose ol { padding-left: 2.5ch; }
