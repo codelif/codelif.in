@@ -116,6 +116,12 @@ body {
 p { margin: 0 0 0.85rem; }
 p:last-child { margin-bottom: 0; }
 
+/* Monospace plus a narrow screen means a single long token can push the page
+   wider than the viewport. Repo URLs and names like org.freedesktop.Notifications
+   are both long enough to do it at 320px. */
+p, dt, dd, li, h1, h2 { overflow-wrap: break-word; }
+.meta a, .apropos .ap-name { overflow-wrap: anywhere; }
+
 b, strong { color: var(--bold); font-weight: 700; }
 i, em { font-style: italic; }
 
@@ -201,8 +207,20 @@ ul.plain li { margin-bottom: 0.15rem; }
   body { padding: 1.25rem 1rem 2.5rem; font-size: 15px; --ind: 2ch; }
   /* The right slot only ever repeated the left one; drop it before wrapping. */
   .slot-r { display: none; }
+  .man-line { gap: 0.5ch; }
+  /* Two slots left, so stop centring the second one against a phantom third. */
+  .slot-c { text-align: right; }
   .apropos li { grid-template-columns: 1fr; gap: 0; margin-bottom: 0.7rem; }
   .apropos .ap-dash { display: none; }
+  .prose ul, .prose ol { padding-left: 2.5ch; }
+}
+
+/* Small phones (iPhone SE and down). Buy back horizontal room, since at 320px
+   the measure is already under 40 characters. */
+@media (max-width: 24rem) {
+  body { padding: 1rem 0.75rem 2rem; font-size: 14px; --ind: 1.5ch; }
+  .man-line, .nav { font-size: 0.8125rem; }
+  .tp dd { margin-left: 1.5ch; }
 }
 
 .vh {
