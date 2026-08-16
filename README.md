@@ -35,7 +35,7 @@ Star counts are a hand-maintained snapshot. They are not fetched.
 ## Adding a post
 
 Drop a file in `content/blog/`. The slug becomes the man page name, so keep
-it short and lowercase — `kitty-panel.md` renders as `KITTY-PANEL(7)`.
+it short and lowercase, so `kitty-panel.md` renders as `KITTY-PANEL(7)`.
 
 ```toml
 +++
@@ -55,7 +55,7 @@ post itself. Write it in the man style: lowercase, no trailing period.
 1. The `[--dark]` flag in the nav toggles the theme and persists it. A tiny
    inline script in `<head>` applies the stored value before first paint so
    there is no flash.
-2. The footer date — where a man page prints its last-modified — is replaced
+2. The footer date, where a man page prints its last-modified, is replaced
    with the date of the last public GitHub activity. Cached per session.
 
 Both fail silently. With JS off the page is complete and the footer shows the
@@ -65,7 +65,7 @@ build date.
 
 Cloudflare Pages. `zola build`, publish `public/`.
 
-Note the apex previously returned a **525** — Cloudflare could not complete a
-TLS handshake with whatever the apex A record pointed at. Pointing the apex at
+Note the apex previously returned a **525**, meaning Cloudflare could not
+complete a TLS handshake with the apex origin. Pointing the apex at
 Pages takes that origin out of the path. Check that record still isn't needed
 before removing it; subdomains (`pawbar.`, `pyjiit.`) were unaffected.

@@ -1,16 +1,16 @@
 {% extends "base.html" %}
 
 
-{% block title %}codelif(1) — Harsh Sharma{% endblock %}
+{% block title %}codelif(1) - Harsh Sharma{% endblock %}
 {% block description %}{{ section.description }}{% endblock %}
 
 {% block content %}
-<h1 class="vh">Harsh Sharma (codelif) — Linux desktop tooling, mostly in Go</h1>
+<h1 class="vh">Harsh Sharma (codelif) - Linux desktop tooling, mostly in Go</h1>
 
 <section class="sec">
   <h2>NAME</h2>
   <div class="body">
-    <p><b>codelif</b> — {{ section.extra.name_line | split(pat=" — ") | last }}</p>
+    <p><b>codelif</b> - {{ section.extra.name_line | split(pat=" - ") | last }}</p>
   </div>
 </section>
 
@@ -39,7 +39,7 @@
   <div class="body">
     <dl class="tp">
       {% for p in section.extra.projects %}
-      <dt><b>{{ p.name }}</b>({{ p.sect }}) — {{ p.tagline }}</dt>
+      <dt><b>{{ p.name }}</b>({{ p.sect }}) - {{ p.tagline }}</dt>
       <dd>
         <p class="meta">{{ p.meta }} · <a href="{{ p.url }}">{{ p.url_label }}</a></p>
         <p>{{ p.body }}</p>

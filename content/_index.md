@@ -1,15 +1,15 @@
 +++
 title = "codelif"
 template = "index.html"
-description = "Harsh Sharma — Linux desktop tooling, mostly in Go."
+description = "Harsh Sharma. Linux desktop tooling, mostly in Go."
 
 [extra]
 # Man page header/footer. The footer date is replaced at runtime by the
-# last public GitHub activity; see static/lastmod.js.
+# last public GitHub activity; see static/site.js.
 man_section = "1"
 man_group = "User Commands"
 
-name_line = "codelif — Harsh Sharma; writes Linux desktop tooling, mostly in Go"
+name_line = "codelif - Harsh Sharma; writes Linux desktop tooling, mostly in Go"
 
 # The template appends a [--dark] flag to this list; that one is the theme
 # toggle. Without JS it is just more synopsis text, which is the point.
@@ -31,7 +31,7 @@ tagline = "a status bar that is a kitty terminal panel"
 meta = "Go · BSD-3 · 109★"
 url = "https://github.com/nekorg/pawbar"
 url_label = "github.com/nekorg/pawbar"
-body = "Modern terminals already ship truecolor, text sizing, inline images, hover and mouse reporting. kitty's panel kitten will put one of those anywhere on your screen. At that point a status bar does not need a GUI toolkit — it needs a terminal and an escape sequence. Everything a bar normally reimplements, the terminal already did."
+body = "Modern terminals already ship truecolor, text sizing, inline images, hover and mouse reporting. kitty's panel kitten will put one of those anywhere on your screen. At that point a status bar does not need a GUI toolkit; it needs a terminal and an escape sequence. Everything a bar normally reimplements, the terminal already did."
 
 [[extra.projects]]
 name = "hyprnotify"
@@ -49,7 +49,7 @@ tagline = "a Linux-first WhatsApp client; one daemon, any number of thin fronten
 meta = "Go · Qt/Kirigami · BSD-3"
 url = "https://github.com/codelif/whatevr"
 url_label = "github.com/codelif/whatevr"
-body = "Chat clients fuse the network, the message store and the pixels into one process, so every new interface means reimplementing all three. Here whatevrd owns the connection, the SQLite store, the media cache and notifications; a frontend owns pixels and a documented unix socket. That split is the whole design — writing another frontend is a weekend, not a fork."
+body = "Chat clients fuse the network, the message store and the pixels into one process, so every new interface means reimplementing all three. Here whatevrd owns the connection, the SQLite store, the media cache and notifications; a frontend owns pixels and a documented unix socket. That split is the whole design: writing another frontend is a weekend, not a fork."
 
 [[extra.projects]]
 name = "jiit"

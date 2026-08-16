@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}{{ page.slug }}({{ page.extra.man_section | default(value="7") }}) — codelif{% endblock %}
+{% block title %}{{ page.slug }}({{ page.extra.man_section | default(value="7") }}) - codelif{% endblock %}
 {% block description %}{{ page.description | default(value=page.title) }}{% endblock %}
 
 {% block man_date %}
@@ -13,7 +13,7 @@
 <section class="sec">
   <h2>NAME</h2>
   <div class="body">
-    <p><b>{{ page.slug }}</b> — {{ page.description | default(value=page.title) }}</p>
+    <p><b>{{ page.slug }}</b> - {{ page.description | default(value=page.title) }}</p>
   </div>
 </section>
 
@@ -28,7 +28,7 @@
   <h2>SEE ALSO</h2>
   <div class="body">
     <ul class="plain">
-      <li><a href="{{ get_url(path='@/blog/_index.md') }}"><b>codelif</b>(7)</a> — everything else here</li>
+      <li><a href="{{ get_url(path='@/blog/_index.md') }}"><b>codelif</b>(7)</a> - everything else here</li>
       <li><a href="{{ get_url(path='@/_index.md') }}"><b>codelif</b>(1)</a></li>
     </ul>
   </div>

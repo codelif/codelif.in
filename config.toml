@@ -1,6 +1,6 @@
 base_url = "https://codelif.in"
 title = "codelif"
-description = "Harsh Sharma — Linux desktop tooling, mostly in Go."
+description = "Harsh Sharma. Linux desktop tooling, mostly in Go."
 default_language = "en"
 author = "Harsh Sharma"
 

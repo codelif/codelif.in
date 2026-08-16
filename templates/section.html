@@ -1,16 +1,16 @@
 {% extends "base.html" %}
 
 
-{% block title %}codelif(7) — writing{% endblock %}
+{% block title %}codelif(7) - writing{% endblock %}
 {% block description %}{{ section.description }}{% endblock %}
 
 {% block content %}
-<h1 class="vh">codelif(7) — writing</h1>
+<h1 class="vh">codelif(7) - writing</h1>
 
 <section class="sec">
   <h2>NAME</h2>
   <div class="body">
-    <p><b>codelif</b> — {{ section.extra.name_line | split(pat=" — ") | last }}</p>
+    <p><b>codelif</b> - {{ section.extra.name_line | split(pat=" - ") | last }}</p>
   </div>
 </section>
 
