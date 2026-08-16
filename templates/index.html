@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+
+
+{% block title %}codelif(1) — Harsh Sharma{% endblock %}
+{% block description %}{{ section.description }}{% endblock %}
+
+{% block content %}
+<h1 class="vh">Harsh Sharma (codelif) — Linux desktop tooling, mostly in Go</h1>
+
+<section class="sec">
+  <h2>NAME</h2>
+  <div class="body">
+    <p><b>codelif</b> — {{ section.extra.name_line | split(pat=" — ") | last }}</p>
+  </div>
+</section>
+
+<section class="sec">
+  <h2>SYNOPSIS</h2>
+  <div class="body">
+    <p class="synopsis"><b>codelif</b>
+      {%- for f in section.extra.synopsis_flags %}
+      {%- set parts = f | split(pat=" ") %}
+      <span class="flag">[{{ parts[0] }}{% if parts | length > 1 %} <i>{{ parts[1] }}</i>{% endif %}]</span>
+      {%- endfor %}
+    </p>
+  </div>
+</section>
+
+<section class="sec">
+  <h2>DESCRIPTION</h2>
+  <div class="body">
+    {% for p in section.extra.description_paras %}<p>{{ p }}</p>
+    {% endfor %}
+  </div>
+</section>
+
+<section class="sec">
+  <h2>PROJECTS</h2>
+  <div class="body">
+    <dl class="tp">
+      {% for p in section.extra.projects %}
+      <dt><b>{{ p.name }}</b>({{ p.sect }}) — {{ p.tagline }}</dt>
+      <dd>
+        <p class="meta">{{ p.meta }} · <a href="{{ p.url }}">{{ p.url_label }}</a></p>
+        <p>{{ p.body }}</p>
+      </dd>
+      {% endfor %}
+    </dl>
+    <p class="note">Sixty-odd more at <a href="https://github.com/{{ config.extra.github }}?tab=repositories">github.com/{{ config.extra.github }}</a>. Most of them are one evening long.</p>
+  </div>
+</section>
+
+<section class="sec">
+  <h2>WRITING</h2>
+  <div class="body">
+    <p>See <a href="{{ get_url(path='@/blog/_index.md') }}"><b>codelif</b>(7)</a> for notes and posts.</p>
+  </div>
+</section>
+
+<section class="sec">
+  <h2>FILES</h2>
+  <div class="body">
+    <dl class="tp">
+      <dt><a href="{{ get_url(path='codelif.asc') }}"><i>/codelif.asc</i></a></dt>
+      <dd><p class="meta">PGP public key. Fingerprint:<br><span class="fpr">{{ config.extra.pgp_fingerprint }}</span></p></dd>
+    </dl>
+  </div>
+</section>
+
+<section class="sec">
+  <h2>SEE ALSO</h2>
+  <div class="body">
+    <ul class="plain">
+      <li><a href="https://github.com/{{ config.extra.github }}">github.com/{{ config.extra.github }}</a></li>
+      <li><a href="mailto:{{ config.extra.email }}">{{ config.extra.email }}</a></li>
+      <li><a href="https://linkedin.com/in/{{ config.extra.linkedin }}">linkedin.com/in/{{ config.extra.linkedin }}</a></li>
+      <li><a href="{{ get_url(path='blog/rss.xml') }}">/blog/rss.xml</a></li>
+    </ul>
+  </div>
+</section>
+
+<section class="sec">
+  <h2>BUGS</h2>
+  <div class="body">
+    <p>Sleeps less than two hours a day. Drinks more NESCAFE than the documentation recommends. Will explain the JIIT webportal's threat model unprompted.</p>
+    <p>Report bugs to <a href="mailto:{{ config.extra.email }}">{{ config.extra.email }}</a>.</p>
+  </div>
+</section>
+{% endblock %}

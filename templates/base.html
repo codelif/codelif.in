@@ -1,0 +1,61 @@
+{# The three-part man header/footer is derived from front matter here rather
+   than passed down from the child templates: Tera does not propagate a
+   child's top-level `set` to the parent, and blocks cannot be reused twice
+   (the right slot repeats the left one). #}
+{%- if page -%}
+  {%- set_global man_left = (page.slug | upper) ~ "(" ~ (page.extra.man_section | default(value="7")) ~ ")" -%}
+  {%- set_global man_center = page.extra.man_group | default(value="Miscellaneous") -%}
+{%- elif section -%}
+  {%- set_global man_left = "CODELIF(" ~ (section.extra.man_section | default(value="1")) ~ ")" -%}
+  {%- set_global man_center = section.extra.man_group | default(value="User Commands") -%}
+{%- else -%}
+  {%- set_global man_left = "CODELIF(1)" -%}
+  {%- set_global man_center = "User Commands" -%}
+{%- endif -%}
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{% block title %}{{ config.title }}{% endblock %}</title>
+<meta name="description" content="{% block description %}{{ config.description }}{% endblock %}">
+<meta name="author" content="{{ config.extra.author }}">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="{{ current_url | default(value=config.base_url) }}">
+<link rel="alternate" type="application/rss+xml" title="codelif(7)" href="{{ get_url(path='blog/rss.xml') }}">
+<link rel="stylesheet" href="{{ get_url(path='style.css') | safe }}">
+{# Runs before first paint so a stored theme never flashes the wrong one. #}
+<script>(function(){var d=document.documentElement;d.className=d.className.replace(/\bno-js\b/,'js');try{var t=localStorage.getItem('theme');if(t==='dark'||t==='light')d.setAttribute('data-theme',t);}catch(e){}})();</script>
+</head>
+<body>
+
+<nav class="nav" aria-label="Sections">
+  <a href="{{ get_url(path='@/_index.md') }}">codelif(1)</a>
+  <span class="sep" aria-hidden="true">·</span>
+  <a href="{{ get_url(path='@/blog/_index.md') }}">codelif(7)</a>
+  <span class="sep" aria-hidden="true">·</span>
+  <button type="button" class="toggle" id="theme-toggle" aria-live="polite">[--dark]</button>
+</nav>
+
+<div class="man-line man-head">
+  <span class="slot slot-l">{{ man_left }}</span>
+  <span class="slot slot-c">{{ man_center }}</span>
+  <span class="slot slot-r" aria-hidden="true">{{ man_left }}</span>
+</div>
+
+<main class="man">
+{% block content %}{% endblock %}
+</main>
+
+<div class="man-line man-foot">
+  <span class="slot slot-l">codelif.in</span>
+  <span class="slot slot-c">{% block man_date %}
+    {%- set built = now() | date(format='%Y-%m-%d') -%}
+    <time id="lastmod" datetime="{{ built }}" title="site built {{ built }}">{{ built }}</time>
+  {% endblock %}</span>
+  <span class="slot slot-r" aria-hidden="true">{{ man_left }}</span>
+</div>
+
+<script src="{{ get_url(path='site.js') | safe }}" defer></script>
+</body>
+</html>

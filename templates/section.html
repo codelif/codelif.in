@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+
+{% block title %}codelif(7) — writing{% endblock %}
+{% block description %}{{ section.description }}{% endblock %}
+
+{% block content %}
+<h1 class="vh">codelif(7) — writing</h1>
+
+<section class="sec">
+  <h2>NAME</h2>
+  <div class="body">
+    <p><b>codelif</b> — {{ section.extra.name_line | split(pat=" — ") | last }}</p>
+  </div>
+</section>
+
+<section class="sec">
+  <h2>DESCRIPTION</h2>
+  <div class="body">
+    {% if section.pages | length > 0 %}
+    <ul class="apropos">
+      {% for page in section.pages %}
+      <li>
+        <a class="ap-name" href="{{ page.permalink }}">{{ page.slug }} ({{ page.extra.man_section | default(value="7") }})</a>
+        <span class="ap-dash" aria-hidden="true">-</span>
+        <span class="ap-desc">{{ page.description | default(value=page.title) }}</span>
+      </li>
+      {% endfor %}
+    </ul>
+    {% else %}
+    <p class="note">{{ section.extra.empty_note }}</p>
+    {% endif %}
+  </div>
+</section>
+
+<section class="sec">
+  <h2>SEE ALSO</h2>
+  <div class="body">
+    <ul class="plain">
+      <li><a href="{{ get_url(path='@/_index.md') }}"><b>codelif</b>(1)</a></li>
+      <li><a href="{{ get_url(path='blog/rss.xml') }}">/blog/rss.xml</a></li>
+    </ul>
+  </div>
+</section>
+{% endblock %}

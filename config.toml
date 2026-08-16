@@ -1,0 +1,24 @@
+base_url = "https://codelif.in"
+title = "codelif"
+description = "Harsh Sharma — Linux desktop tooling, mostly in Go."
+default_language = "en"
+author = "Harsh Sharma"
+
+compile_sass = false
+build_search_index = false
+minify_html = true
+
+# Feeds are generated per-section; the blog section opts in.
+generate_feeds = false
+feed_filenames = ["rss.xml"]
+
+[markdown]
+smart_punctuation = false
+render_emoji = false
+
+[extra]
+author = "Harsh Sharma"
+email = "harsh@codelif.in"
+github = "codelif"
+linkedin = "codelif"
+pgp_fingerprint = "E676 2761 4BDD A9C0 1076  F211 F558 B2A2 512E 1295"

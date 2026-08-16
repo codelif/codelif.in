@@ -1,0 +1,221 @@
+/* codelif.in — a man page.
+   No framework, no webfonts, no build step. The roff conventions are the
+   design system: flush-left section heads, indented bodies, ~78 columns. */
+
+:root {
+  color-scheme: light dark;
+  --bg:     #f6f4ee;
+  --fg:     #1f1c18;
+  --bold:   #0c0b09;
+  --dim:    #6e695e;
+  --accent: #9a3b1b;
+  --rule:   #ddd8c9;
+  --tint:   #ebe6d8;
+  --ind: 7ch;
+}
+
+/* Dark is declared twice on purpose: once for the system preference, once
+   for the explicit override. The override must win in both directions. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg:     #131210;
+    --fg:     #c9c5bb;
+    --bold:   #f0ece2;
+    --dim:    #807b71;
+    --accent: #d0895a;
+    --rule:   #2c2a25;
+    --tint:   #1c1a17;
+  }
+}
+:root[data-theme="dark"] {
+  --bg:     #131210;
+  --fg:     #c9c5bb;
+  --bold:   #f0ece2;
+  --dim:    #807b71;
+  --accent: #d0895a;
+  --rule:   #2c2a25;
+  --tint:   #1c1a17;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0 auto;
+  max-width: 78ch;
+  padding: 1.75rem 1.5rem 3rem;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", "JetBrains Mono",
+               "Fira Mono", Menlo, Consolas, "DejaVu Sans Mono", monospace;
+  font-size: 16px;
+  line-height: 1.55;
+  -webkit-text-size-adjust: 100%;
+}
+
+/* ---- site chrome ------------------------------------------------------ */
+
+.nav {
+  color: var(--dim);
+  font-size: 0.875rem;
+  margin-bottom: 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 0.75ch;
+}
+.nav .sep { color: var(--rule); }
+
+.toggle {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+}
+.toggle:hover { color: var(--accent); }
+.no-js .toggle { cursor: default; }
+.no-js .toggle:hover { color: inherit; }
+
+/* ---- the three-part man header and footer ----------------------------- */
+
+.man-line {
+  display: flex;
+  gap: 1ch;
+  font-size: 0.875rem;
+  color: var(--dim);
+  text-transform: none;
+}
+.man-line .slot { flex: 1 1 0; min-width: 0; }
+.slot-l { text-align: left; }
+.slot-c { text-align: center; }
+.slot-r { text-align: right; }
+
+.man-head {
+  border-bottom: 1px solid var(--rule);
+  padding-bottom: 0.6rem;
+  margin-bottom: 1.6rem;
+}
+.man-foot {
+  border-top: 1px solid var(--rule);
+  padding-top: 0.6rem;
+  margin-top: 3rem;
+}
+
+/* ---- sections --------------------------------------------------------- */
+
+.sec { margin: 0 0 1.6rem; }
+.sec h2 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--bold);
+  letter-spacing: 0.06em;
+  margin: 0 0 0.55rem;
+}
+.sec .body { padding-left: var(--ind); }
+
+p { margin: 0 0 0.85rem; }
+p:last-child { margin-bottom: 0; }
+
+b, strong { color: var(--bold); font-weight: 700; }
+i, em { font-style: italic; }
+
+a {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-style: dotted;
+  text-decoration-color: var(--dim);
+  text-underline-offset: 3px;
+}
+a:hover {
+  color: var(--accent);
+  text-decoration-style: solid;
+  text-decoration-color: currentColor;
+}
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+.dim, .note, .meta { color: var(--dim); }
+.note, .meta { font-size: 0.9375rem; }
+
+.synopsis .flag { white-space: nowrap; }
+
+/* ---- tagged paragraphs (roff .TP) ------------------------------------- */
+
+.tp { margin: 0; }
+.tp dt { color: var(--bold); margin-top: 1.35rem; }
+.tp dt:first-child { margin-top: 0; }
+.tp dd { margin: 0.3rem 0 0 var(--ind); }
+
+.fpr { overflow-wrap: anywhere; }
+
+ul.plain { list-style: none; margin: 0; padding: 0; }
+ul.plain li { margin-bottom: 0.15rem; }
+
+/* ---- apropos listing (the blog index) --------------------------------- */
+
+.apropos { list-style: none; margin: 0; padding: 0; }
+.apropos li {
+  display: grid;
+  grid-template-columns: minmax(0, 24ch) 1ch minmax(0, 1fr);
+  gap: 0 1ch;
+  margin-bottom: 0.35rem;
+}
+.apropos .ap-dash { color: var(--dim); }
+.apropos .ap-desc { color: var(--dim); }
+
+/* ---- post body -------------------------------------------------------- */
+
+.prose h2, .prose h3 {
+  font-size: 1rem;
+  color: var(--bold);
+  margin: 1.75rem 0 0.5rem;
+}
+.prose ul, .prose ol { margin: 0 0 0.85rem; padding-left: 3ch; }
+.prose li { margin-bottom: 0.2rem; }
+.prose blockquote {
+  margin: 0 0 0.85rem;
+  padding-left: 2ch;
+  border-left: 1px solid var(--rule);
+  color: var(--dim);
+}
+.prose code {
+  background: var(--tint);
+  padding: 0.1em 0.4ch;
+  border-radius: 2px;
+}
+.prose pre {
+  background: var(--tint);
+  padding: 0.85rem 1ch;
+  overflow-x: auto;
+  margin: 0 0 0.85rem;
+  line-height: 1.45;
+}
+.prose pre code { background: none; padding: 0; }
+.prose img { max-width: 100%; height: auto; }
+.prose hr { border: 0; border-top: 1px solid var(--rule); margin: 1.75rem 0; }
+.prose table { display: block; overflow-x: auto; border-collapse: collapse; }
+.prose th, .prose td { border: 1px solid var(--rule); padding: 0.3rem 1ch; text-align: left; }
+
+/* ---- narrow screens ---------------------------------------------------- */
+
+@media (max-width: 34rem) {
+  body { padding: 1.25rem 1rem 2.5rem; font-size: 15px; --ind: 2ch; }
+  /* The right slot only ever repeated the left one; drop it before wrapping. */
+  .slot-r { display: none; }
+  .apropos li { grid-template-columns: 1fr; gap: 0; margin-bottom: 0.7rem; }
+  .apropos .ap-dash { display: none; }
+}
+
+.vh {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+@media print {
+  body { max-width: none; color: #000; background: #fff; }
+  .nav { display: none; }
+  a { text-decoration: none; }
+}

@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block title %}{{ page.slug }}({{ page.extra.man_section | default(value="7") }}) — codelif{% endblock %}
+{% block description %}{{ page.description | default(value=page.title) }}{% endblock %}
+
+{% block man_date %}
+  <time datetime="{{ page.date | date(format='%Y-%m-%d') }}">{{ page.date | date(format='%Y-%m-%d') }}</time>
+{% endblock %}
+
+{% block content %}
+<h1 class="vh">{{ page.title }}</h1>
+
+<section class="sec">
+  <h2>NAME</h2>
+  <div class="body">
+    <p><b>{{ page.slug }}</b> — {{ page.description | default(value=page.title) }}</p>
+  </div>
+</section>
+
+<section class="sec">
+  <h2>DESCRIPTION</h2>
+  <div class="body prose">
+    {{ page.content | safe }}
+  </div>
+</section>
+
+<section class="sec">
+  <h2>SEE ALSO</h2>
+  <div class="body">
+    <ul class="plain">
+      <li><a href="{{ get_url(path='@/blog/_index.md') }}"><b>codelif</b>(7)</a> — everything else here</li>
+      <li><a href="{{ get_url(path='@/_index.md') }}"><b>codelif</b>(1)</a></li>
+    </ul>
+  </div>
+</section>
+
+<section class="sec">
+  <h2>AUTHOR</h2>
+  <div class="body">
+    <p>{{ config.extra.author }} &lt;<a href="mailto:{{ config.extra.email }}">{{ config.extra.email }}</a>&gt;</p>
+  </div>
+</section>
+{% endblock %}
