@@ -159,6 +159,10 @@ a:hover {
 .tp dt:first-child { margin-top: 0; }
 .tp dd { margin: 0.3rem 0 0 var(--ind); }
 
+/* The last paragraph in a dd has its bottom margin zeroed by p:last-child, so
+   anything following the list would otherwise butt straight up against it. */
+.tp + p { margin-top: 1.35rem; }
+
 .fpr { overflow-wrap: anywhere; }
 
 ul.plain { list-style: none; margin: 0; padding: 0; }
