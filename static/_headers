@@ -1,3 +1,6 @@
 /.well-known/openpgpkey/*
   Access-Control-Allow-Origin: *
   Content-Type: application/octet-stream
+
+/codelif.asc
+  Content-Type: application/pgp-keys
